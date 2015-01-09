@@ -48,12 +48,12 @@ FILE: for my $file ( $rule->all($source_dir) ) {
     }
     my ($file_sha,$file_md5);
     if ($options{'sha'} && !-d $file) {
-        if (sha_file($file) ne sha_file($target) {
+        if (sha_file($file) ne sha_file($target)) {
             print "$file is not the same (SHA) as the file in $target_dir\n";
         }
     }
     if ($options{'md5'} && !-d $file) {
-        if (md5_file($file) ne md5_file($target) {
+        if (md5_file($file) ne md5_file($target)) {
             print "$file is not the same (MD5) as the file in $target_dir\n";
         }
     }
