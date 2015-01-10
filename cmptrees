@@ -33,7 +33,8 @@ if ($options{'help'} || !$source_dir || !$target_dir) {
 
 my $rule = Path::Iterator::Rule->new;
 
-FILE: for my $file ( $rule->all($source_dir) ) {
+my $next = $rule->iter( $source_dir, { relative => 1 } );
+FILE: while ( defined( my $file = $next->() ) ) {
     for my $exclude (@{$options{'exclude'}}) {
         next FILE if $file =~ m/$exclude/;
     }
