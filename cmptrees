@@ -69,5 +69,7 @@ sub md5_file {
     my $filename = shift || die "missing file for md5 sum";
     open (my $fh, '<', $filename) or die "Can't open '$filename': $!";
     binmode($fh);
-    return Digest::MD5->new->addfile($fh)->hexdigest;
+    my $digest = Digest::MD5->new->addfile($fh)->hexdigest;
+    close($fh);
+    return $digest;
 }
